@@ -7,6 +7,18 @@ Snowflake customers use a variety of tools as part of a larger solution to build
 To help Snowflake customers think about best practices for how they might implement a solution sans tools, we have developed a couple of examples that might help with developing or modifying these options for your own data warehouse. The Snowflake Professional Services team and Systems Integrators can assist with or implement processes like these. And it is worth noting that code provided as a template or as an example 
 <hr>
 
+## Methods
+
+### Method 1 - Dynamic Common Table Expression (CTE) from Business Rules 
+**Pros**
+**Cons**
+
+### Method 2 - Declarative Pipeline through concrete Views
+**Pros**
+**Cons**
+
+## Example Data and Rules
+
 ## Maintainers
 
 **Gabriel Mullen**
