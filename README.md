@@ -19,13 +19,24 @@ An [External Table](https://docs.snowflake.com/en/user-guide/tables-external-int
 Once this strategy is defined for the business for a data load process then additional business specific data rules can then be applied. Again this would be a great place for additional tooling to come into play, but if our goal is to simplify the architecture footprint or there are constraints with procuring additional tools then consider the following methods as examples for moving forward.
 
 ### Method 1 - Dynamic Common Table Expression (CTE) from Business Rules 
-Method 1 describes a 
+Method 1 describes a stored procedure which is used to generate a Common Table Expression (CTE) for each of the business rules that are defined in the Validation Rules table. First a table is loaded with metadata about the Business Rule and the associated WHERE clause that will allow for the process to determine which rules fall outside the bounds defined by the rules. In the example provided we use Citibike Trips data that are leveraged as part of our online [Zero to Snowflake labs](https://s3.amazonaws.com/snowflake-workshop-lab/InpersonZTS_LabGuide.pdf). The data can be connected to via an External Stage to this S3 bucket URL (s3://snowflake-workshop-lab/citibike-trips).
+
+The example business rules that we will conduct are:
+* bike rides cannot exceed 24 hours
+* Riders cannot be older than 150 years old
+* The starttime must be a valid date and time
+
+
 **Pros**
+All business rules are kept in a single table repository. This centralizes all the rules and makes them easy to manage. Rules can be deprecated through a start/end date allowing them to naturally expire or manual obsolescence.
 **Cons**
+Any time you create a dynamic process, the probability of error due to complications increases. 
 
 ### Method 2 - Declarative Pipeline through concrete Views
 **Pros**
+Complicated business rules can be defined in more robust SQL. Cross database checks can be leveraged to include other data domains or lookup tables. 
 **Cons**
+The views, if not well managed, can create sprawl that makes the views difficult to understand or manage from a broader perspective.  Managin the lifecycle of a view is a manual or external process based on metadata. 
 
 ## Example Data and Rules
 
