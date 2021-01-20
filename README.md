@@ -29,12 +29,14 @@ The example business rules that we will conduct are:
 
 **Pros**
 All business rules are kept in a single table repository. This centralizes all the rules and makes them easy to manage. Rules can be deprecated through a start/end date allowing them to naturally expire or manual obsolescence.
+
 **Cons**
 Any time you create a dynamic process, the probability of error due to complications increases. 
 
 ### Method 2 - Declarative Pipeline through concrete Views
 **Pros**
 Complicated business rules can be defined in more robust SQL. Cross database checks can be leveraged to include other data domains or lookup tables. 
+
 **Cons**
 The views, if not well managed, can create sprawl that makes the views difficult to understand or manage from a broader perspective.  Managin the lifecycle of a view is a manual or external process based on metadata. 
 
